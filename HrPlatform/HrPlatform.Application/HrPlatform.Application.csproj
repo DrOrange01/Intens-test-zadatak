@@ -10,8 +10,4 @@
     <ProjectReference Include="..\HrPlatform.Domain\HrPlatform.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>
