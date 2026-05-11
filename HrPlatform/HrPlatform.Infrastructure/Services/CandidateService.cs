@@ -49,6 +49,10 @@ namespace HrPlatform.Infrastructure.Services
                 Email = dto.Email
             };
 
+            var emailExists = await _context.Candidates.AnyAsync(c => c.Email.ToLower() == dto.Email.ToLower());
+            if (emailExists)
+                throw new InvalidOperationException($"Candidate with email '{dto.Email}' already exists.");
+
             _context.Candidates.Add(candidate);
             await _context.SaveChangesAsync();
 

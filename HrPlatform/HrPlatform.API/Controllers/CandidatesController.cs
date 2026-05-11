@@ -41,8 +41,15 @@ namespace HrPlatform.API.Controllers
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return Conflict(ex.Message);
             }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UpdateCandidateDto dto)
+        {
+            var candidate = await _candidateService.UpdateAsync(id, dto);
+            return candidate == null ? NotFound() : Ok(candidate);
         }
 
         [HttpDelete("{id}")]
